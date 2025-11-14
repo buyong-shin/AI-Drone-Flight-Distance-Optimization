@@ -1222,28 +1222,60 @@ if clicked:
 # ============================================================
 
 legend_html = """
-<div style="margin-top:6px; padding:12px 14px; border:1px solid #e5e7eb; border-radius:12px;
-            background:#ffffff; color:#1f2937; font-size:13px; max-width:1100px; line-height:1.55;">
+<style>
+/* 설명 박스 전체 스타일(공통) */
+.legend-box {
+    margin-top:8px;
+    padding:14px 16px;
+    border:1px solid #e5e7eb;
+    border-radius:12px;
+    background:#ffffff;
+    color:#1f2937;
+    font-size:14px;
+    max-width:1100px;
+    line-height:1.55;
+}
+
+/* 불릿(점)과 글자를 한 줄로 붙여 보이게 */
+.legend-box ul {
+    margin:4px 0 0 0;
+    padding-left:1.1rem;          /* 기본 padding 줄이기 */
+    list-style-position: inside;  /* ● 점을 글자 안쪽으로 */
+}
+.legend-box li {
+    margin:2px 0;
+}
+
+/* 모바일 화면에서 글자/여백 살짝 줄이기 */
+@media (max-width: 600px) {
+    .legend-box {
+        font-size:13px;
+        padding:10px 12px;
+    }
+}
+</style>
+
+<div class="legend-box">
 
   <!-- 지도 사용법 -->
-  <b style="font-size:14px;">지도는 이렇게 사용하세요</b>
-  <ul style="margin:6px 0 0 18px;">
+  <b style="font-size:15px;">지도는 이렇게 사용하세요</b>
+  <ul>
     <li>지도를 클릭해 <b>출발지 → 목적지</b>를 순서대로 찍어 주세요.</li>
     <li>경로선이 <span style="color:#16a34a; font-weight:600;">초록색</span>이면 <b><span style="color:#16a34a; font-weight:600;">비행 가능</span></b>,
         <span style="color:#ef4444; font-weight:600;">빨간색</span>이면 <b>배터리 부족·거리 초과로 <span style="color:#ef4444; font-weight:600;">비행 불가</span></b>입니다.</li>
   </ul>
 
   <!-- 공역 색상 + 보라색 윤곽 설명 -->
-  <div style="margin-top:10px;">
-    <b style="font-size:14px;">공역 표시 방식</b>
-    <ul style="margin:6px 0 0 18px; line-height:1.5;">
+  <div style="margin-top:12px;">
+    <b style="font-size:15px;">공역 표시 방식</b>
+    <ul>
       <li>지도에 보이는 <span style="color:#8a2be2; font-weight:600;">보라색 윤곽선</span>은  
           AIP 공역(P/R/D·CTR·TMA 등)을 <b>하나로 합친 “주의 구역” 테두리</b>입니다.</li>
       <li>모바일·웹에서 한눈에 보기 쉽게 하려고, <b>세부 구분(금지/제한/위험, 고도 정보 등)은 생략</b>되어 있습니다.</li>
       <li>실제 비행 전에는 반드시 <b>국토부 드론원스톱·AIP 원문</b>에서 공역 종류와 고도 제한을 다시 확인해 주세요.</li>
     </ul>
 
-    <div style="margin-top:4px; line-height:1.5;">
+    <div style="margin-top:6px; line-height:1.6;">
       <span style='color:#ff0033;'>■</span> 금지(P)&nbsp;&nbsp;
       <span style='color:#ff8800;'>■</span> 제한(R)&nbsp;&nbsp;
       <span style='color:#ff3d00;'>■</span> 위험(D)&nbsp;&nbsp;
@@ -1253,7 +1285,7 @@ legend_html = """
       <span style='color:#00b050;'>■</span> 훈련(MOA)&nbsp;&nbsp;
       <span style='color:#00ccff;'>▭</span> 항로(AWY)&nbsp;&nbsp;
       <span style='color:#999999;'>▭</span> 경계/기타
-      <div style="font-size:11px; color:#6b7280; margin-top:3px;">
+      <div style="font-size:12px; color:#6b7280; margin-top:4px;">
         ※ 위 색상은 데이터 원본 기준 구분이며, 지도에서는 가독성을 위해 대부분
         <span style="color:#8a2be2; font-weight:600;">보라색 윤곽선</span>으로 단순화되어 표시됩니다.
       </div>
@@ -1261,19 +1293,15 @@ legend_html = """
   </div>
 
   <!-- 핵심 지표 -->
-  <div style="margin-top:10px;">
-    <b style="font-size:14px;">비행 핵심 지표 한눈에 보기</b>
-    <ul style="margin:6px 0 0 18px; line-height:1.5;">
+  <div style="margin-top:14px;">
+    <b style="font-size:15px;">비행 핵심 지표 한눈에 보기</b>
+    <ul>
       <li><b>추천 비행 속도</b> — 지금 풍속·풍향·기온·비행 속도·추가 중량 기준으로, <b>가장 적은 배터리를 쓰는 속도</b>입니다.</li>
-
       <li><b>Km당 배터리 소모량 (Wh/km)</b> — 현재 설정한 속도로 <b>1km를 날았을 때 소비되는 배터리 소모량</b>입니다.</li>
-
       <li><b>비행 가능 거리</b> — 실측 데이터 + AI 모델로 계산한  
           <b>“지금 조건에서 최대 몇 km까지 안전하게 갈 수 있는지”</b>를 의미합니다.</li>
-
       <li><b>필요 배터리 (80% 기준)</b> — 안전 여유(20%)를 남겨두고,  
           <b>이번 비행에 실제로 사용하는 배터리 비율</b>입니다.</li>
-
       <li><b>비행 가능 여부</b> — 거리 + 배터리 기준을 모두 통과하면  
           <span style="color:#16a34a; font-weight:600;">가능</span>,  
           초과하면 <span style="color:#dc2626; font-weight:600;">불가</span>로 표시됩니다.</li>
@@ -1281,9 +1309,9 @@ legend_html = """
   </div>
 
   <!-- 속도·단위 설명 -->
-  <div style="margin-top:10px;">
-    <b style="font-size:14px;">속도·단위는 이렇게 이해하면 편해요</b>
-    <ul style="margin:6px 0 0 18px; line-height:1.5;">
+  <div style="margin-top:14px;">
+    <b style="font-size:15px;">속도·단위는 이렇게 이해하면 편해요</b>
+    <ul>
       <li>드론의 센서에서는 <b>m/s</b>를 쓰지만, 사람이 보긴 <b>km/h</b>가 더 편합니다.</li>
       <li>그래서 <b>입력은 m/s</b>로 받고, 내부 계산·표시는 <b>km/h</b>로 자동 변환합니다.</li>
       <li>사용자는 <b>단위 신경 쓸 필요 없이 속도만 조절</b>하면 되고,  
@@ -1291,13 +1319,12 @@ legend_html = """
     </ul>
   </div>
 
-  <div style="text-align:center; margin-top:18px; font-size:14px; 
-            line-height:1.5; color:#374151;">
+  <div style="text-align:center; margin-top:25px; font-size:15px; 
+            line-height:1.6; color:#374151;">
+    <b style="font-size:15px;">AI-Drone Flight Distance Optimization</b>
+  </div>
 
-  <b style="font-size:14px;"> AI-Drone Flight Distance Optimization </b><br>
-
-</div>
 </div>
 """
 
-st.components.v1.html(legend_html, height=750)
+st.markdown(legend_html, unsafe_allow_html=True)
