@@ -1286,6 +1286,38 @@ legend_html_mobile = """
   </ul>
 </div>
 
+<div class="legend-section-m" style="margin-top:16px;">
+  <div class="legend-title-m">비행 알고리즘 이해하기</div>
+  <div style="margin-top:6px; font-size:13px; line-height:1.7;">
+
+    <div style="margin-bottom:6px;">
+      <b>① 드론은 너무 느리거나 너무 빠르면 효율이 떨어집니다.</b><br>
+      → 전기모터 효율 특성 때문에 <b>35~45km/h 구간에서 가장 적은 배터리(Wh/km)</b>를 사용합니다.
+    </div>
+
+    <div style="margin-bottom:6px;">
+      <b>② 역풍을 맞으면 배터리 소모가 크게 증가합니다.</b><br>
+      → 역풍 시 지상 속도가 줄어 모터가 더 오래 동작하여 <b>비행 가능 거리 감소</b>가 발생합니다.
+    </div>
+
+    <div style="margin-bottom:6px;">
+      <b>③ 순풍일 때는 더 멀리 비행할 수 있습니다.</b><br>
+      → 순풍은 지상 속도를 높여 <b>적은 에너지로 더 먼 거리</b>를 이동할 수 있습니다.
+    </div>
+
+    <div style="margin-bottom:6px;">
+      <b>④ 비행 가능 거리는 AI 예측모델 × 배터리 80% 사용 전략으로 계산됩니다.</b><br>
+      → DJI Air 3는 안정적인 RTH를 위해 <b>20%는 여유</b>로 남겨 두고 임무는 80%만 사용합니다.
+    </div>
+
+    <div style="margin-bottom:4px;">
+      <b>⑤ 무게·온도 변화는 배터리 효율에 직접 영향을 줍니다.</b><br>
+      → 기온이 낮거나 적재 중량이 증가하면 <b>Wh/km가 상승</b하고 비행 거리가 줄어듭니다.
+    </div>
+
+  </div>
+</div>
+
 <div class="legend-footer-m">
   AI-Drone Flight Distance Optimization (Mobile)
 </div>
@@ -1294,3 +1326,4 @@ legend_html_mobile = """
 """
 
 st.markdown(legend_html_mobile, unsafe_allow_html=True)
+
