@@ -1237,19 +1237,17 @@ legend_html_mobile = """
 .legend-title-m{
   font-size:12px;
   font-weight:800;
-  color:#111827;
   margin-bottom:3px;
 }
-.legend-section-m{margin-top:6px;}
+.legend-section-m{margin-top:10px;}
 .legend-box-m ul{
   margin:3px 0 0 0;
   padding-left:1rem;
-  list-style-position:outside;
 }
-.legend-box-m li{margin:1px 0;}
+.legend-box-m li{margin:2px 0;}
 .legend-footer-m{
   text-align:center;
-  margin-top:8px;
+  margin-top:10px;
   font-size:11px;
   color:#4b5563;
   font-weight:600;
@@ -1258,69 +1256,101 @@ legend_html_mobile = """
 
 <div class="legend-box-m">
 
-<div class="legend-section-m">
-  <div class="legend-title-m">지도 사용 방법</div>
-  <ul>
-    <li>지도를 터치해 <b>출발지 → 목적지</b> 순으로 선택합니다.</li>
-    <li>경로선이 <span style="color:#16a34a; font-weight:700;">초록색</span>이면 <b>비행 가능</b>,
-        <span style="color:#ef4444; font-weight:700;">빨간색</span>이면 <b>비행 불가</b>입니다.</li>
-  </ul>
-</div>
-
-<div class="legend-section-m">
-  <div class="legend-title-m">공역 안내</div>
-  <ul>
-    <li><span style="color:#8b5cf6; font-weight:700;">보라색 윤곽선</span>은 AIP 공역(P/R/D·CTR·TMA 등)을
-        단순 통합한 <b>주의 구역</b>입니다.</li>
-    <li>실제 비행 전에는 반드시 <b>드론원스톱·AIP 원문</b>에서 고도 제한 등을 다시 확인해야 합니다.</li>
-  </ul>
-</div>
-
-<div class="legend-section-m">
-  <div class="legend-title-m">핵심 지표</div>
-  <ul>
-    <li><b>추천 속도</b>: 현재 조건에서 가장 효율적인 비행 속도</li>
-    <li><b>Wh/km</b>: 1km 비행 시 예상 배터리 사용량</li>
-    <li><b>비행 거리</b>: 현재 조건에서 안전하게 갈 수 있는 최대 거리</li>
-    <li><b>필요 배터리</b>: 20%는 여유로 남기고 필요한 비율 (≤80% 이내 권장)</li>
-  </ul>
-</div>
-
-<div class="legend-section-m" style="margin-top:16px;">
-  <div class="legend-title-m">비행 알고리즘 이해하기</div>
-  <div style="margin-top:6px; font-size:13px; line-height:1.7;">
-
-    <div style="margin-bottom:6px;">
-      <b>① 드론은 너무 느리거나 너무 빠르면 효율이 떨어집니다.</b><br>
-      → 전기모터 효율 특성 때문에 <b>35~45km/h 구간에서 가장 적은 배터리(Wh/km)</b>를 사용합니다.
-    </div>
-
-    <div style="margin-bottom:6px;">
-      <b>② 역풍을 맞으면 배터리 소모가 크게 증가합니다.</b><br>
-      → 역풍 시 지상 속도가 줄어 모터가 더 오래 동작하여 <b>비행 가능 거리 감소</b>가 발생합니다.
-    </div>
-
-    <div style="margin-bottom:6px;">
-      <b>③ 순풍일 때는 더 멀리 비행할 수 있습니다.</b><br>
-      → 순풍은 지상 속도를 높여 <b>적은 에너지로 더 먼 거리</b>를 이동할 수 있습니다.
-    </div>
-
-    <div style="margin-bottom:6px;">
-      <b>④ 비행 가능 거리는 AI 예측모델 × 배터리 80% 사용 전략으로 계산됩니다.</b><br>
-      → DJI Air 3는 안정적인 RTH를 위해 <b>20%는 여유</b>로 남겨 두고 임무는 80%만 사용합니다.
-    </div>
-
-    <div style="margin-bottom:4px;">
-      <b>⑤ 무게·온도 변화는 배터리 효율에 직접 영향을 줍니다.</b><br>
-      → 기온이 낮거나 적재 중량이 증가하면 <b>Wh/km가 상승</b하고 비행 거리가 줄어듭니다.
-    </div>
-
+  <!-- 지도 사용 -->
+  <div class="legend-section-m">
+    <div class="legend-title-m">지도 사용 방법</div>
+    <ul>
+      <li>지도를 터치해 <b>출발지 → 목적지</b> 순서로 선택합니다.</li>
+      <li>경로선이 <span style="color:#16a34a;font-weight:700;">초록색</span>이면 <b>비행 가능</b>,
+          <span style="color:#ef4444;font-weight:700;">빨간색</span>이면 <b>비행 불가</b>입니다.</li>
+    </ul>
   </div>
-</div>
 
-<div class="legend-footer-m">
-  AI-Drone Flight Distance Optimization (Mobile)
-</div>
+  <!-- 공역 안내 -->
+  <div class="legend-section-m">
+    <div class="legend-title-m">공역 안내</div>
+    <ul>
+      <li><span style="color:#8b5cf6;font-weight:700;">보라색 윤곽선</span>은 AIP 공역(P/R/D·CTR·TMA 등)을
+          단순 통합한 <b>주의 구역</b>입니다.</li>
+      <li>실제 비행 전에는 반드시 <b>드론원스톱·AIP 원문</b>에서 고도 제한과 상세 공역을 확인하세요.</li>
+    </ul>
+  </div>
+
+  <!-- 핵심 지표 -->
+  <div class="legend-section-m">
+    <div class="legend-title-m">핵심 지표</div>
+    <ul>
+      <li><b>추천 속도</b> : 현재 조건에서 가장 효율적인 비행 속도</li>
+      <li><b>Wh/km</b> : 1km 이동 시 예상 배터리 사용량</li>
+      <li><b>비행 가능 거리</b> : 현 조건에서 이동 가능한 최대 거리</li>
+      <li><b>필요 배터리</b> : RTH 확보 위해 <b>20%</b>는 여유로 남기고 계산</li>
+    </ul>
+  </div>
+
+  <!-- 비행 알고리즘 -->
+  <div class="legend-section-m">
+    <div class="legend-title-m">비행 알고리즘 이해하기</div>
+
+    <div style="margin-top:5px; font-size:11px; line-height:1.55;">
+
+      <div style="margin-bottom:4px;">
+        <b>① 너무 느리거나 빠르면 효율이 떨어집니다.</b><br>
+        전기모터 특성상 <b>35~45km/h</b> 구간에서 배터리 소모가 가장 낮습니다.
+      </div>
+
+      <div style="margin-bottom:4px;">
+        <b>② 역풍에서는 배터리 소모가 크게 늘어납니다.</b><br>
+        지상 속도가 줄어 <b>비행 시간↑ → 비행 가능 거리↓</b>가 됩니다.
+      </div>
+
+      <div style="margin-bottom:4px;">
+        <b>③ 순풍일 때는 더 멀리 비행할 수 있습니다.</b><br>
+        지상 속도가 증가해 <b>적은 에너지로 더 먼 거리</b>를 이동합니다.
+      </div>
+
+      <div style="margin-bottom:4px;">
+        <b>④ 비행 가능 거리 = AI 모델 × 배터리 80% 사용 전략</b><br>
+        DJI Air 3 기준으로 <b>20%는 RTH 여유</b>로 남기고 계산합니다.
+      </div>
+
+      <div style="margin-bottom:0;">
+        <b>⑤ 무게·온도는 효율에 직접 영향을 줍니다.</b><br>
+        적재 중량 증가·저온일수록 <b>Wh/km↑ → 비행 거리↓</b>가 됩니다.
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 모델 기반 안내 -->
+  <div class="legend-section-m">
+    <div class="legend-title-m">모델 기반 안내</div>
+
+    <div style="margin-top:5px; font-size:11px; line-height:1.55;">
+
+      <div style="margin-bottom:4px;">
+        <b>① 모델 구성 기반</b><br>
+        <b>DJI Air 3 실제 비행 로그</b>와 <b>실시간 날씨 데이터</b>를 결합해,
+        속도·풍속·기온·중량에 따른 <b>배터리 소비율(Wh/km)</b>을 예측합니다.
+      </div>
+
+      <div style="margin-bottom:4px;">
+        <b>② 비행 전 필수 체크</b><br>
+        다른 기체에도 참고용으로 쓸 수 있지만, 비행 전 <b>현장 바람·지형·GPS 상태</b>를 확인하고
+        <b>SOC 20~30%</b>는 항상 여유로 남겨야 합니다.
+      </div>
+
+      <div style="margin-bottom:0;">
+        <b>③ 실제 비행 거리 오차</b><br>
+        온도·난류·배터리 노후도 등 환경에 따라
+        <b>예측값보다 실제 비행 거리가 더 짧을 수 있습니다.</b>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="legend-footer-m">
+    AI-Drone Flight Distance Optimization (Mobile)
+  </div>
 
 </div>
 """
