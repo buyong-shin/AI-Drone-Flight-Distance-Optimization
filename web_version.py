@@ -1341,34 +1341,33 @@ legend_html_web = """
 <style>
 .legend-box-web{
   margin:12px auto 18px;
-  padding:18px 20px 14px;
+  padding:20px 22px 20px;
   border:1px solid #e5e7eb;
   border-radius:14px;
   background:#ffffff;
   color:#111827;
   font-size:14px;
   max-width:1100px;
-  line-height:1.6;
+  line-height:1.65;
 }
 .legend-title{
-  font-size:15px;
+  font-size:16px;
   font-weight:800;
   color:#111827;
-  margin-bottom:4px;
+  margin-bottom:8px;
 }
-.legend-section{margin-top:10px;}
+.legend-subtitle{
+  font-size:15px;
+  font-weight:700;
+  margin-top:14px;
+  margin-bottom:6px;
+}
 .legend-box-web ul{
   margin:4px 0 0 0;
   padding-left:1.1rem;
   list-style-position:outside;
 }
-.legend-box-web li{margin:2px 0;}
-.legend-colors{
-  margin-top:6px;
-  font-size:13px;
-  line-height:1.5;
-}
-.legend-colors span{font-weight:600;}
+.legend-box-web li{margin:3px 0;}
 .legend-note{
   font-size:12px;
   color:#6b7280;
@@ -1376,42 +1375,34 @@ legend_html_web = """
 }
 .legend-footer{
   text-align:center;
-  margin-top:14px;
-  font-size:13px;
-  color:#4b5563;
-  font-weight:600;
+  margin-top:20px;
+  font-size:15px;
+  color:#374151;
+  font-weight:700;
 }
 </style>
 
 <div class="legend-box-web">
 
-<div class="legend-section">
+  <!-- 사용 방법 -->
   <div class="legend-title">지도를 이렇게 사용해보세요</div>
   <ul>
-    <li>지도를 클릭해 <b>출발지 → 목적지</b>를 순으로 선택해 주세요.</li>
-    <li>경로선이 <span style="color:#16a34a; font-weight:700;">초록색</span>이면 <b><span style="color:#16a34a; font-weight:700;">비행 가능</span></b>,
-        <span style="color:#ef4444; font-weight:700;">빨간색</span>이면
-        <b>배터리 부족·거리 초과로 <span style="color:#ef4444; font-weight:700;">비행 불가</span></b>입니다.</li>
+    <li>지도를 클릭해 <b>출발지 → 목적지</b> 순으로 선택해 주세요.</li>
+    <li>경로선이 <span style="color:#16a34a; font-weight:700;">초록색</span>이면 <b>비행 가능</b>,
+        <span style="color:#ef4444; font-weight:700;">빨간색</span>이면 <b>비행 불가</b>입니다.</li>
   </ul>
-</div>
 
-<div class="legend-section">
-  <div class="legend-title">공역 안내</div>
+  <!-- 공역 안내 -->
+  <div class="legend-subtitle">공역 안내</div>
   <ul>
-    <li>지도에 보이는 <span style="color:#8b5cf6; font-weight:700;">보라색 윤곽선</span>은
-        AIP 공역(P/R/D·CTR·TMA 등)을 하나로 합친 <b>“주의 구역” 테두리</b>입니다.</li>
-    <li>한눈에 보기 쉽게 하려고,
-        <b>세부 구분(금지/제한/위험, 고도 정보 등)은 단순화</b>되어 있습니다.</li>
-    <li>실제 비행 전에 반드시 <b>국토부 드론원스톱·AIP 원문</b>에서
-        공역 종류와 고도 제한을 다시 확인해 주세요.</li>
+    <li><span style="color:#8b5cf6; font-weight:700;">보라색 윤곽선</span>은 AIP 공역(P/R/D·CTR·TMA 등)을 하나로 합친 <b>주의 구역</b>입니다.</li>
+    <li>가독성을 위해 <b>금지/제한/위험/고도 정보 등은 단순화</b>되어 있습니다.</li>
+    <li>실제 비행 전 반드시 <b>드론원스톱·AIP 원문</b>에서 상세 공역을 다시 확인하세요.</li>
   </ul>
 
-<div class="legend-section">
-  <div class="legend-title" style="font-size:15px; font-weight:800; margin-bottom:6px;">
-    공역 색상 예시
-  </div>
-
-  <div class="legend-colors" style="margin-top:6px; font-size:14px; line-height:1.6;">
+  <!-- 공역 색상 예시 -->
+  <div class="legend-subtitle">공역 색상 예시</div>
+  <div style="font-size:13px; line-height:1.6; margin-top:4px;">
     <span style="color:#ff0033; font-weight:600;">■</span> 금지(P)&nbsp;&nbsp;
     <span style="color:#ff8800; font-weight:600;">■</span> 제한(R)&nbsp;&nbsp;
     <span style="color:#ff3d00; font-weight:600;">■</span> 위험(D)&nbsp;&nbsp;
@@ -1423,48 +1414,91 @@ legend_html_web = """
     <span style="color:#9ca3af; font-weight:600;">▭</span> 경계/기타
   </div>
 
-  <div class="legend-note" style="font-size:12px; color:#6b7280; margin-top:6px;">
-    ※ 위 색상은 데이터 원본 기준 구분이며, 지도에서는 가독성을 위해 대부분 
-    <b><span style="color:#8b5cf6; font-weight:700;">보라색 윤곽선</span> 하나로 단순화</b>하여 표시됩니다.
+  <div class="legend-note">
+    ※ 지도에서는 대부분 <b><span style="color:#8b5cf6;">보라색 윤곽선 하나</span></b>로 단순화하여 표시됩니다.
   </div>
+
+  <!-- 지표 설명 -->
+  <div class="legend-subtitle">비행 핵심 지표 한눈에 보기</div>
+
+  <div style="margin-bottom:10px;"><b>① 추천 비행 속도</b><br>
+    → 현재 <b>풍속·풍향·기온·속도·중량</b>을 기준으로 가장 효율적인 속도입니다.
+  </div>
+
+  <div style="margin-bottom:10px;"><b>② Wh/km (Km당 배터리 소모량)</b><br>
+    → 지금 속도로 <b>1km 이동 시 필요한 배터리</b>입니다.
+  </div>
+
+  <div style="margin-bottom:10px;"><b>③ 비행 가능 거리</b><br>
+    → 조건에서 드론이 <b>안전하게 이동할 수 있는 최대 거리(km)</b>입니다.
+  </div>
+
+  <div style="margin-bottom:10px;"><b>④ 필요 배터리(80% 기준)</b><br>
+    → <b>20%는 RTH 여유</b>로 남기고, 임무는 80%만 사용합니다.
+  </div>
+
+  <div style="margin-bottom:16px;"><b>⑤ 비행 가능 여부</b><br>
+    → 조건 충족 시 “<span style="color:#16a34a; font-weight:700;">비행 가능</span>”,
+       초과 시 “<span style="color:#ef4444; font-weight:700;">비행 불가</span>”.
+  </div>
+
+  <!-- 알고리즘 설명 -->
+  <div class="legend-subtitle">비행 알고리즘 이해하기</div>
+
+  <div style="margin-bottom:12px;">
+    <b>① 너무 느리거나 빠르면 효율이 감소합니다.</b><br>
+    → 전기모터 효율 특성상 <b>35~45km/h</b> 구간에서 배터리 소모가 가장 낮습니다.
+  </div>
+
+  <div style="margin-bottom:12px;">
+    <b>② 역풍은 배터리 소모를 급증시킵니다.</b><br>
+    → 지상 속도가 줄어 <b>비행 시간 증가 → 거리 감소</b>.
+  </div>
+
+  <div style="margin-bottom:12px;">
+    <b>③ 순풍은 더 멀리 비행하게 합니다.</b><br>
+    → 지상 속도가 증가해 <b>적은 에너지로 더 먼 거리</b>를 이동합니다.
+  </div>
+
+  <div style="margin-bottom:12px;">
+    <b>④ 비행 가능 거리 = AI 예측모델 × 80% 배터리 전략</b><br>
+    → DJI Air 3 기준, RTH를 위해 <b>20%는 여유</b>로 남김.
+  </div>
+
+  <div style="margin-bottom:20px;">
+    <b>⑤ 기온·무게는 배터리 효율에 직접 영향</b><br>
+    → 기온이 낮거나 중량이 증가하면 <b>Wh/km 상승 → 비행 거리 감소</b>.
+  </div>
+
+<!-- 모델 기반 안내 -->
+<div class="legend-subtitle" style="margin-top:20px;">모델 기반 안내</div>
+
+<div style="margin-bottom:10px;">
+  <b>① 모델 구성 기반</b><br>
+  → 이 모델은 <b>DJI Air 3 실제 비행 로그 + 실시간 날씨 데이터</b>를 기반으로 구축되었으며,<br>
+  → <b>속도·풍속·기온·중량</b>에 따른 <b>배터리 소비율(Wh/km)</b>을 예측하는 방식입니다.
 </div>
 
-<!-- 핵심 지표 설명 -->
-<div class="legend-section">
-<div class="legend-title">비행 핵심 지표 한눈에 보기</div>
-<ul>
-<div style="margin-top:6px; font-size:13px; line-height:1.8;">
-  <div style="margin-bottom:6px;">
-    <b>추천 비행 속도</b><br>
-    → 현재 <b>풍속·풍향·기온·비행 속도·적재 중량</b>을 기준으로 가장 효율적인 속도입니다.
-  </div>
+<div style="margin-bottom:10px;">
+  <b>② 실제 비행 전 필수 체크 사항</b><br>
+  → 다른 기체에도 참고용으로 활용할 수 있지만,<br>
+  → 비행 전 반드시 <b>현장 바람·지형·GPS 상태</b>를 확인하고,<br>
+  → <b>예비 SOC 20~30%</b>는 반드시 남겨 두어야 합니다.
+</div>
 
-  <div style="margin-bottom:6px;">
-    <b>Wh/km (Km당 배터리 소모량)</b><br>
-    → 지금 속도로 <b>1km 비행 시 소모되는 배터리 양</b>입니다.
-  </div>
+<div style="margin-bottom:0;">
+  <b>③ 실제 비행 거리 오차 가능성</b><br>
+  → 실제 환경(<b>온도·난류·배터리 노후도</b> 등)에 따라<br>
+  → <b>예측값보다 실제 비행거리가 짧을 수 있습니다.</b>
+</div>
 
-  <div style="margin-bottom:6px;">
-    <b>비행 가능 거리</b><br>
-    → 현재 조건에서 드론이 <b>안전하게 이동할 수 있는 최대 거리(km)</b>입니다.
-  </div>
-
-  <div style="margin-bottom:6px;">
-    <b>필요 배터리 (80% 기준)</b><br>
-    → <b>20%는 안전 여유(RTH 용)</b>으로 남기고 실제 임무에 사용하는 배터리 비율입니다.
-  </div>
-
-  <div style="margin-bottom:2px;">
-    <b>비행 가능 여부</b><br>
-    → 거리·배터리 조건을 모두 충족하면 “<span style="color:#16a34a; font-weight:700;">비행 가능</span>”, 하나라도 초과하면 <b>“<span style="color:#ef4444; font-weight:700;">비행 불가</span>”</b>로 표시됩니다.
+  <!-- Footer -->
+  <div class="legend-footer">
+    AI-Drone Flight Distance Optimization
   </div>
 
 </div>
-
-<div style="text-align:center; margin-top:16px; font-size:17px; font-weight:700; color:#1f2937;">
-  AI-Drone Flight Distance Optimization
-</div>
-
 """
 
 st.markdown(legend_html_web, unsafe_allow_html=True)
+
